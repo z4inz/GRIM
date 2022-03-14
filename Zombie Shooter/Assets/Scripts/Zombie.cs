@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,25 @@ public class Zombie : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        var bullet = collision.collider.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            Die();
+        }
+    }
+
+    // Get rid of collider if zombie dies, disabled nav mesh agent, play death animation and destroy the object after 5 seconds
+    void Die()
+    {
+        GetComponent<Collider>().enabled = false;
+        navMeshAgent.enabled = false;
+        animator.SetTrigger("Died");
+        Destroy(gameObject, 5f);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
