@@ -4,12 +4,19 @@ using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
-    private float attackRange = 1f;
+    [SerializeField] float attackRange = 1f;
+    [SerializeField] int health = 2;
+
+    int currentHealth;
+
     NavMeshAgent navMeshAgent;
     Animator animator;
-    
+
+    bool Alive => currentHealth > 0;
+
      void Awake() 
     {
+        currentHealth = health;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
@@ -19,7 +26,11 @@ public class Zombie : MonoBehaviour
         var bullet = collision.collider.GetComponent<Bullet>();
         if (bullet != null)
         {
-            Die();
+            currentHealth = currentHealth -= 1;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -32,15 +43,14 @@ public class Zombie : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        if (!Alive)
+        {
+            return;
+        }
+
         var Player = FindObjectOfType<PlayerMovement>();
         // Only get player's position if nav mesh is enabled
         if (navMeshAgent.enabled == true)
@@ -65,7 +75,10 @@ public class Zombie : MonoBehaviour
     // Animation callback, using animation system events
     public void AttackComplete()
     {
-        navMeshAgent.enabled = true;
+        if(Alive) {
+            navMeshAgent.enabled = true;
+        }
+        
     }
 
     // Animation callback, using animation system events
