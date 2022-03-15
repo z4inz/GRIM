@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float speed = 5f;
+    [SerializeField] float speed = 5f;
     Animator animator;
 
     void Awake()
@@ -17,11 +17,20 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
-        movement *= Time.deltaTime * speed;
 
-        transform.Translate(movement, Space.World);
+        if (movement.magnitude > 0)
+        {
+            movement.Normalize();
+            movement *= Time.deltaTime * speed;
+            transform.Translate(movement, Space.World);
+        }
 
-        animator.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime); //Dampening effect at end so no snapping
-        animator.SetFloat("Vertical", vertical, 0.1f, Time.deltaTime);
+
+        float velocityZ = Vector3.Dot(movement.normalized, transform.forward);
+        float velocityX = Vector3.Dot(movement.normalized, transform.right);
+
+
+        animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime); //Dampening effect at end so no snapping
+        animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
     }
 }
