@@ -78,7 +78,6 @@ public class Zombie : MonoBehaviour
         if(Alive) {
             navMeshAgent.enabled = true;
         }
-        
     }
 
     // Animation callback, using animation system events

@@ -25,9 +25,11 @@ public class PlayerWeapon : MonoBehaviour
     {
         AimTowardsMouse();
 
-        if (ReadyToFire())
-        {
-            Fire();
+        if (Input.GetMouseButton(0)) {
+            if (ReadyToFire())
+            {
+                Fire();
+            }
         }
     }
 

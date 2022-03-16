@@ -13,10 +13,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal"); //Getting user's keyboard input
+        float horizontal = Input.GetAxis("Horizontal"); // Getting user's keyboard input
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontal, 0f, vertical);
+        Vector3 movement = new Vector3(horizontal, 0f, vertical); // Creating movement variable
 
         if (movement.magnitude > 0)
         {
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         float velocityX = Vector3.Dot(movement.normalized, transform.right);
 
 
-        animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime); //Dampening effect at end so no snapping
+        animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime); // Dampening effect at end so no snapping
         animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
     }
 }
