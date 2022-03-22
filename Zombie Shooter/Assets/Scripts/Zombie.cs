@@ -6,11 +6,14 @@ public class Zombie : MonoBehaviour
 {
     [SerializeField] float attackRange = 1f;
     [SerializeField] int health = 2;
+    [SerializeField] float attackDelay = 0.25f;
 
     int currentHealth;
 
     NavMeshAgent navMeshAgent;
     Animator animator;
+
+    float nextAttackTime;
 
     bool Alive => currentHealth > 0;
 
@@ -40,6 +43,7 @@ public class Zombie : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         navMeshAgent.enabled = false;
         animator.SetTrigger("Died");
+        GameManager.zombiesLeftInRound -= 1;
         Destroy(gameObject, 5f);
     }
 
@@ -53,25 +57,33 @@ public class Zombie : MonoBehaviour
 
         var Player = FindObjectOfType<PlayerMovement>();
         // Only get player's position if nav mesh is enabled
-        if (navMeshAgent.enabled == true)
+        if (navMeshAgent.enabled)
         {
             navMeshAgent.SetDestination(Player.transform.position);
         }
 
 
-        // If distance between current object (zombie) and player is less than attack range, play attack animation
+        // If distance between current object (zombie) and player is less than attack range, then attack
         if (Vector3.Distance(transform.position, Player.transform.position) < attackRange) 
         {
-            Attack();
+            if (ReadyToAttack())
+            {
+                Attack();
+            }
+
         }
     }
+
+    bool ReadyToAttack() => Time.time >= nextAttackTime;
+
     // Play attack animation, then disabled nav mesh so the zombie stops moving
     void Attack()
     {
+        nextAttackTime = Time.time + attackDelay;
         animator.SetTrigger("Attack");
         navMeshAgent.enabled = false;
     }
-    
+
     // Animation callback, using animation system events
     public void AttackComplete()
     {

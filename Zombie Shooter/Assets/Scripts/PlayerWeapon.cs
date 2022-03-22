@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +12,10 @@ public class PlayerWeapon : MonoBehaviour
 
     float nextFireTime;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +23,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         AimTowardsMouse();
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0))
+        {
             if (ReadyToFire())
             {
                 Fire();
@@ -51,6 +50,7 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
+    // Time.time is the amount of time since the game started running, for e.g., if time is 1, then nextFireTime = 1.25, then once time is greater than nextFireTime, it's been 0.25 seconds, so it's a delay
     bool ReadyToFire() => Time.time >= nextFireTime;
 
     // Have a delay, when instantiating the shot, position is player's position + up, and firePoint is the gameobject position of barrel
