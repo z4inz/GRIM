@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc283804fcc650c4296e291a0048cae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.1
   bulletPrefab: {fileID: 153790172, guid: 878537fcf32206549b1cae8f3714deca, type: 3}
   aimLayerMask:
     serializedVersion: 2

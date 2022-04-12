@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1
   health: 2
+  attackDelay: 1
 --- !u!195 &4562283326337089027
 NavMeshAgent:
   m_ObjectHideFlags: 0

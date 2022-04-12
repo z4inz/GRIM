@@ -11,6 +11,11 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] Transform firePoint;
 
     float nextFireTime;
+    List<PowerUp> powerups = new List<PowerUp>();
+
+    public void AddPowerUp(PowerUp powerup) => powerups.Add(powerup);
+
+    public void RemovePowerUp(PowerUp powerup) => powerups.Remove(powerup);
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +61,13 @@ public class PlayerWeapon : MonoBehaviour
     // Have a delay, when instantiating the shot, position is player's position + up, and firePoint is the gameobject position of barrel
     void Fire()
     {
-        nextFireTime = Time.time + delay;
+        float newDelay = delay;
+        foreach (var powerup in powerups)
+        {
+            newDelay *= powerup.DelayMultiplier;
+        }
+
+        nextFireTime = Time.time + newDelay;
         Bullet shot = Instantiate(bulletPrefab, firePoint.position + Vector3.up, transform.rotation);
         shot.Launch(transform.forward);
     }

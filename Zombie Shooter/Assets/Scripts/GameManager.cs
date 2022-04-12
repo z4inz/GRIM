@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (zombiesSpawnedInRound < zombiesInRound && countdown == 0)
         {
-            if (zombieSpawnTimer > 2)
+            if (zombieSpawnTimer > 0.5)
             {
                 SpawnZombie();
                 zombieSpawnTimer = 0;
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         else if (zombiesLeftInRound == 0)
         {
             StartNextRound();
-            Debug.Log("Round " + round);
+            Debug.Log("Wave " + round);
         }
 
         if (countdown > 0)
@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
 
     void StartNextRound()
     {
-        zombiesInRound = zombiesLeftInRound = round * 10;
+        zombiesInRound = zombiesLeftInRound = (round + 1) * 5;
         zombiesSpawnedInRound = 0;
-        countdown = 5;
+        countdown = 10;
         round++;
     }
 }
