@@ -1172,6 +1172,7 @@ MonoBehaviour:
   - {fileID: 622514838}
   - {fileID: 793681593}
   zombiePrefab: {fileID: 4562283326337089026, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
+  zombiePrefab2: {fileID: 7525082495638641743, guid: 9521b40e6f00e3c4e8241a501559939f, type: 3}
 --- !u!1 &1031414491
 GameObject:
   m_ObjectHideFlags: 3
@@ -1435,7 +1436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434545950 stripped
 GameObject:
@@ -1941,7 +1942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987571141555674333, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3987571141555674333, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
       propertyPath: m_LocalPosition.x

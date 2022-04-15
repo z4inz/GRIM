@@ -14,18 +14,22 @@ public class GameManager : MonoBehaviour
     float zombieSpawnTimer = 0;
     public Transform[] zombieSpawnPoints;
     [SerializeField] Zombie zombiePrefab;
+    [SerializeField] Zombie zombiePrefab2;
+    Zombie chosenZombie;
+    int x;
 
     float countdown = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (zombiesSpawnedInRound < zombiesInRound && countdown == 0)
         {
             if (zombieSpawnTimer > 0.5)
@@ -53,12 +57,14 @@ public class GameManager : MonoBehaviour
         {
             countdown = 0;
         }
+
     }
 
     void SpawnZombie()
     {
+        selectZombieType();
         Vector3 randomSpawnPoint = zombieSpawnPoints[UnityEngine.Random.Range(0, zombieSpawnPoints.Length)].position;
-        Instantiate(zombiePrefab, randomSpawnPoint, transform.rotation);
+        Instantiate(chosenZombie, randomSpawnPoint, transform.rotation);
         zombiesSpawnedInRound++;
     }
 
@@ -69,5 +75,17 @@ public class GameManager : MonoBehaviour
         countdown = 10;
         round++;
 
+    }
+    void selectZombieType()
+    {
+        x = UnityEngine.Random.Range(1, 100);
+        if (x <= 90)
+        {
+            chosenZombie = zombiePrefab;
+        }
+        else
+        {
+            chosenZombie = zombiePrefab2;
+        }
     }
 }
