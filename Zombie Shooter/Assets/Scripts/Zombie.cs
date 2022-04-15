@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
+    public static event Action ZombieDied;
+
     [SerializeField] float attackRange = 1f;
     [SerializeField] int health = 2;
     [SerializeField] float attackDelay = 0.25f;
@@ -43,8 +45,10 @@ public class Zombie : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         navMeshAgent.enabled = false;
         animator.SetTrigger("Died");
+        ZombieDied?.Invoke();
         GameManager.zombiesLeftInRound -= 1;
         Destroy(gameObject, 5f);
+
     }
 
     // Update is called once per frame
@@ -75,7 +79,8 @@ public class Zombie : MonoBehaviour
     }
 
     bool ReadyToAttack() => Time.time >= nextAttackTime;
-
+    bool InAttackRange => Vector3.Distance(transform.position, PlayerMovement.Instance.transform.position) <= attackRange;
+        
     // Play attack animation, then disabled nav mesh so the zombie stops moving
     void Attack()
     {
@@ -95,6 +100,10 @@ public class Zombie : MonoBehaviour
     // Animation callback, using animation system events
     public void AttackHit()
     {
-        Debug.Log("Killed Player");
+        if (InAttackRange)
+        {
+            Debug.Log("Killed Player");
+        }
+        
     }
 }

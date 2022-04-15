@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static event Action NewWave;
+
     int round = 1;
     int zombiesInRound = 5;
     public static int zombiesLeftInRound = 5;
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         else if (zombiesLeftInRound == 0)
         {
             StartNextRound();
+            NewWave?.Invoke();
             Debug.Log("Wave " + round);
         }
 
@@ -53,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnZombie()
     {
-        Vector3 randomSpawnPoint = zombieSpawnPoints[Random.Range(0, zombieSpawnPoints.Length)].position;
+        Vector3 randomSpawnPoint = zombieSpawnPoints[UnityEngine.Random.Range(0, zombieSpawnPoints.Length)].position;
         Instantiate(zombiePrefab, randomSpawnPoint, transform.rotation);
         zombiesSpawnedInRound++;
     }
@@ -64,5 +68,6 @@ public class GameManager : MonoBehaviour
         zombiesSpawnedInRound = 0;
         countdown = 10;
         round++;
+
     }
 }

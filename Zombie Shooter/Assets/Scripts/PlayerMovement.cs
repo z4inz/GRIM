@@ -2,11 +2,14 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance { get; private set; }
+
     [SerializeField] float speed = 5f;
     Animator animator;
 
     void Awake()
     {
+        Instance = this;
         animator = GetComponent<Animator>();
     }
 

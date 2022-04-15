@@ -5,7 +5,8 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] float duration;
-    [SerializeField] private float delayMultiplier = 0.5f;
+    [SerializeField] float delayMultiplier = 0.5f;
+    [SerializeField] float cooldown = 10f;
 
     public float DelayMultiplier => delayMultiplier; 
 
@@ -24,6 +25,11 @@ public class PowerUp : MonoBehaviour
         {
             yield return new WaitForSeconds(duration);
             playerWeapon.RemovePowerUp(this);
+            yield return new WaitForSeconds(cooldown);
+
+            transform.position = new Vector3(Random.Range(10.0f, 40.0f), 0, Random.Range(10.0f, 40.0f));
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Renderer>().enabled = true;
         }
     }
 }
