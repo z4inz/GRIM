@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cef8a27bb53dc44abf975a4d1457da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
+  attackRange: 1.25
   health: 2
   attackDelay: 1
 --- !u!195 &4562283326337089027

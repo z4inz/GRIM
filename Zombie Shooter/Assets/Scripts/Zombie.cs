@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
-    public static event Action ZombieDied;
+    public static event Action<Zombie> ZombieDied;
 
     [SerializeField] float attackRange = 1f;
     [SerializeField] int health = 2;
@@ -45,7 +45,7 @@ public class Zombie : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         navMeshAgent.enabled = false;
         animator.SetTrigger("Died");
-        ZombieDied?.Invoke();
+        ZombieDied?.Invoke(this);
         GameManager.zombiesLeftInRound -= 1;
         Destroy(gameObject, 5f);
 
@@ -79,7 +79,7 @@ public class Zombie : MonoBehaviour
     }
 
     bool ReadyToAttack() => Time.time >= nextAttackTime;
-    bool InAttackRange => Vector3.Distance(transform.position, PlayerMovement.Instance.transform.position) <= attackRange;
+    bool InAttackRange => Vector3.Distance(transform.position, PlayerMovement.Instance.transform.position) < attackRange;
         
     // Play attack animation, then disabled nav mesh so the zombie stops moving
     void Attack()
@@ -90,7 +90,7 @@ public class Zombie : MonoBehaviour
     }
 
     // Animation callback, using animation system events
-    public void AttackComplete()
+    public void EnableMovement()
     {
         if(Alive) {
             navMeshAgent.enabled = true;

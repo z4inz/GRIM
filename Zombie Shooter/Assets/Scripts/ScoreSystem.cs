@@ -9,6 +9,8 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text waveText;
     [SerializeField] TMP_Text multiplierText;
+    [SerializeField] FloatScoreText floatingTextPrefab;
+    [SerializeField] Canvas floatingScoreCanvas;
 
     int score;
     int wave = 1;
@@ -22,13 +24,21 @@ public class ScoreSystem : MonoBehaviour
         GameManager.NewWave += New_Wave;
     }
 
-    void Zombie_Died()
+    void Zombie_Died(Zombie zombie)
     {
         
         UpdateKillMultiplier();
         score += killMultiplier;
 
         scoreText.SetText("Score: " + score.ToString());
+
+        var floatingText = Instantiate(
+            floatingTextPrefab,
+            zombie.transform.position + new Vector3(1, 0, 0),
+            floatingScoreCanvas.transform.rotation,
+            floatingScoreCanvas.transform);
+
+        floatingText.SetScoreValue(killMultiplier);
     }
 
     void UpdateKillMultiplier()
