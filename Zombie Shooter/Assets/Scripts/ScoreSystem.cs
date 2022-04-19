@@ -24,6 +24,11 @@ public class ScoreSystem : MonoBehaviour
         GameManager.NewWave += New_Wave;
     }
 
+    private void OnDestroy()
+    {
+        Zombie.ZombieDied -= Zombie_Died;
+    }
+
     void Zombie_Died(Zombie zombie)
     {
         

@@ -23,7 +23,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        round = 1;
+        zombiesInRound = 5;
+        zombiesLeftInRound = 5;
+        zombiesSpawnedInRound = 0;
+        zombieSpawnTimer = 0;
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Zombie : MonoBehaviour
 {
@@ -103,6 +104,7 @@ public class Zombie : MonoBehaviour
         if (InAttackRange)
         {
             Debug.Log("Killed Player");
+            SceneManager.LoadScene(0);
         }
         
     }

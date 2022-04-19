@@ -17,4 +17,5 @@ public class FloatScoreText : MonoBehaviour
     {
         transform.position += transform.up * Time.deltaTime * floatSpeed;
     }
+
 }
