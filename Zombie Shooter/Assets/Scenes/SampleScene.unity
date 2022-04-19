@@ -689,7 +689,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1095972867}
   m_Follow: {fileID: 1095972867}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -1222,6 +1222,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &984603289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1616738612}
+    m_Modifications:
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.971793
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9717929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.97179335
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.756
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.45187727
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.41616565
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5651654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.550637
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 86.876
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 74.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335334770, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -29.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929173555335436114, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
+      propertyPath: m_Name
+      value: Muzzle Fire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62820eb26e782bf4e9e1bdd8ae017a08, type: 3}
 --- !u!1 &991543171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,6 +1770,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492155203}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1616738612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 664988676358393569, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}
+  m_PrefabInstance: {fileID: 664988677409859142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1665624957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,7 +1961,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1961,6 +2035,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1095972864, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}
+      propertyPath: delay
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095972864, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}
       propertyPath: muzzleFlashTimer
       value: 0.15
       objectReference: {fileID: 0}
@@ -1970,6 +2048,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1168480394, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168480396, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1168480396, guid: 65bc18b35f204b74281db9780a2f98b4, type: 3}

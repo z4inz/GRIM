@@ -13,11 +13,6 @@ public class PlayerWeapon : MonoBehaviour
     float nextFireTime;
     List<PowerUp> powerups = new List<PowerUp>();
 
-    public GameObject muzzleFlashObject;
-    public float muzzleFlashTimer = 0.1f;
-    private float muzzleFlashTimerStart;
-    public bool muzzleFlashEnabled = false;
-
     public void AddPowerUp(PowerUp powerup) => powerups.Add(powerup);
 
     public void RemovePowerUp(PowerUp powerup) => powerups.Remove(powerup);
@@ -25,7 +20,6 @@ public class PlayerWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        muzzleFlashTimerStart = muzzleFlashTimer;
     }
 
     // Update is called once per frame
@@ -38,20 +32,9 @@ public class PlayerWeapon : MonoBehaviour
             if (ReadyToFire())
             {
                 Fire();
-                muzzleFlashEnabled = true;
             }
         }
-        if(muzzleFlashEnabled == true)
-        {
-            muzzleFlashObject.SetActive(true);
-            muzzleFlashTimer -= Time.deltaTime;
-        }
-        if(muzzleFlashTimer <= 0)
-        {
-            muzzleFlashObject.SetActive(false);
-            muzzleFlashEnabled = false;
-            muzzleFlashTimer = muzzleFlashTimerStart;
-        }
+       
     }
 
     void AimTowardsMouse()
@@ -82,6 +65,12 @@ public class PlayerWeapon : MonoBehaviour
         foreach (var powerup in powerups)
         {
             newDelay *= powerup.DelayMultiplier;
+        }
+
+        ParticleSystem[] parts = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in parts)
+        {
+            ps.Emit(1);
         }
 
         nextFireTime = Time.time + newDelay;
