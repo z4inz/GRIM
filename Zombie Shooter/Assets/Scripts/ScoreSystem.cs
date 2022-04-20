@@ -39,7 +39,7 @@ public class ScoreSystem : MonoBehaviour
 
         var floatingText = Instantiate(
             floatingTextPrefab,
-            zombie.transform.position + new Vector3(1, 0, 0),
+            zombie.transform.position + new Vector3(0, 2, 0),
             floatingScoreCanvas.transform.rotation,
             floatingScoreCanvas.transform);
 
