@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
@@ -76,6 +77,24 @@ public class PlayerWeapon : MonoBehaviour
         nextFireTime = Time.time + newDelay;
         Bullet shot = Instantiate(bulletPrefab, firePoint.position + Vector3.up, transform.rotation);
         shot.Launch(transform.forward);
+
+        var x = Quaternion.Euler(20, 0, 0);
+
+        if(powerups.Any(t => t.SpreadShot))
+        {
+            shot = Instantiate(
+                bulletPrefab,
+                firePoint.position + Vector3.up,
+                Quaternion.Euler(transform.forward + transform.right));
+            shot.Launch(transform.forward + transform.right);
+
+            shot = Instantiate(
+                bulletPrefab,
+                firePoint.position + Vector3.up,
+                Quaternion.Euler(transform.forward - transform.right));
+            shot.Launch(transform.forward - transform.right); 
+        }
+
     }
 
 

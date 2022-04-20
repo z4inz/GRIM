@@ -7,6 +7,7 @@ using UnityEngine;
 public class Bullet: MonoBehaviour
 {
     [SerializeField] float speed = 15f;
+
     public void Launch(Vector3 direction)
     {
         direction.Normalize();

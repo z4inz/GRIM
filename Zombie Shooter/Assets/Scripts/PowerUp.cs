@@ -7,8 +7,11 @@ public class PowerUp : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] float delayMultiplier = 0.5f;
     [SerializeField] float cooldown = 10f;
+    [SerializeField] bool spread;
 
-    public float DelayMultiplier => delayMultiplier; 
+    public float DelayMultiplier => delayMultiplier;
+
+    public bool SpreadShot => spread;
 
     private void OnTriggerEnter(Collider other)
     {

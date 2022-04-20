@@ -85,7 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4562283326337089027, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
       propertyPath: m_Speed
-      value: 8
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562283326337089027, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4961262806403153216, guid: 0f2b2557777c4a3429e1394b31782901, type: 3}
       propertyPath: m_Materials.Array.data[0]
